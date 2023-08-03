@@ -11,7 +11,7 @@ bool b_search(int A[], int n, int k){
         }
     }
     
-    //flag to check if element is found
+    //flag to check if element is found.
     if(flag == 1){
         return true;
     }
