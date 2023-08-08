@@ -16,7 +16,29 @@ void selection_sort(int A[], int n){
     }
 }
 
-void selection_sort_rec(int A[], int size){}
+void selection_sort_rec(int A[], int start, int n){
+    
+    int key = start;
+    int j = start+1;
+
+    if(start >= n-1){
+        return;
+    }
+
+    while(j < n){
+        if(A[j] < A[key]){
+            key = j;
+        }
+        j++;
+    }
+
+    if(key != start){
+        swap(A[key], A[start]);
+    }
+
+    return selection_sort_rec(A, start+1, n);
+
+}
 
 int main() {
     int size;
@@ -38,7 +60,7 @@ int main() {
     if (choose == 1) {
         selection_sort(arr, size);
     } else if (choose == 2) {
-        selection_sort_rec(arr, size);
+        selection_sort_rec(arr, 0, size);
     } else {
         std::cout << "Invalid choice. Please enter 1 or 2.\n";
     }
