@@ -29,8 +29,8 @@ int main() {
     }
 
     std::cout << "Enter" << std::endl
-              << "(1) to use Insertion Sort Iteratively" << std::endl
-              << "(2) to use Insertion Sort Recursively" << std::endl;
+              << "(1) to use Selection Sort Iteratively" << std::endl
+              << "(2) to use Selection Sort Recursively" << std::endl;
 
     int choose;
     std::cin >> choose;
