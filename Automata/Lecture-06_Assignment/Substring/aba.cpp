@@ -34,11 +34,11 @@ int main(){
     string ans = dfa(input_s);
 
     if(ans == "3"){
-        cout << input_s << " is a valid string with substring aba.";
+        cout << input_s << " is a valid string with substring aba." << endl;
     }
 
     else{
-        cout << input_s << " is not a valid string.";
+        cout << input_s << " is not a valid string." << endl;
     }
 
     return 0;
