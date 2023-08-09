@@ -1,2 +1,4 @@
-# _C-_
-All dsa algorithms in c++
+# C++
+- All dsa algorithms in C++.
+- All Automata Codes in C++.
+- All NPTEL Assignments in C++.
