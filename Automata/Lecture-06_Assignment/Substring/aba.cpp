@@ -4,7 +4,7 @@
 #include<algorithm>
 using namespace std;
 
-string dfa(string str){
+string dfa(const string& str){
     unordered_map<string, char> state = {
         {"0b", '0'}, {"0a", '1'},
         {"1a", '1'}, {"1b", '2'},
@@ -22,12 +22,26 @@ string dfa(string str){
 
 }
 
+bool isvalid(const string& inp){
+    return all_of(inp.begin(), inp.end(), [](char c){
+        return c == 'a' || c == 'b';
+    });
+}
+
 int main(){
 
     string input_s;
 
-    cout << "Enter a string over \u03A3 = {a,b}:";
-    cin >> input_s;
+    do{
+        cout << "Enter a string over \u03A3 = {a,b}:";
+        cin >> input_s;
+
+        if(!isvalid(input_s)){
+            cout << "Please enter a valid Input !!";
+        }
+
+        cout << endl;
+    }while(!isvalid(input_s));
 
     cout << endl;
 
