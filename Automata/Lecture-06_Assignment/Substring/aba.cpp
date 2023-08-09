@@ -4,24 +4,19 @@
 #include<algorithm>
 using namespace std;
 
-char sub_aba(string str){
-    unordered_map<pair<char, char>, char> state;
-    state[make_pair('q0','a')] = 'q1';
-    state[make_pair('q0','b')] = 'q0';
-    state[make_pair('q1','a')] = 'q1';
-    state[make_pair('q1','b')] = 'q2';
-    state[make_pair('q2','a')] = 'q3';
-    state[make_pair('q2','b')] = 'q0';
-    state[make_pair('q3','a')] = 'q3';
-    state[make_pair('q3','b')] = 'q3';
+string sub_aba(string str){
+    unordered_map<string, char> state = {
+        {"0b", '0'}, {"0a", '1'},
+        {"1a", '1'}, {"1b", '2'},
+        {"2a", '3'}, {"2b", '0'},
+        {"3a", '3'}, {"3b", '3'}
+    };
 
-    char current_state = 'q0';
-    char next_state;
+    string current_state = "0";
 
-    for_each(str.begin(), str.end(), [&current_state, &state](char c){
-        current_state = state[make_pair(current_state, c)];
-
-    });
+    for (char c : str) {
+        current_state = state[string(current_state + c)];
+    }
 
     return current_state;
 
@@ -29,4 +24,23 @@ char sub_aba(string str){
 
 int main(){
 
+    string input_s;
+
+    cout << "Enter a string over \u03A3 = {a,b}:";
+    cin >> input_s;
+
+    cout << endl;
+
+    string ans = sub_aba(input_s);
+
+    if(ans == "3"){
+        cout << input_s << " is a valid string with substring aba.";
+    }
+
+    else{
+        cout << input_s << " is not a valid string.";
+    }
+
+    return 0;
+    
 }
