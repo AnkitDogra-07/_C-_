@@ -1,3 +1,5 @@
+//Q1 Design DFA accepting all strings over Σ = {a,b} having substring "aba".
+
 #include<iostream>
 #include<unordered_map>
 #include<string>
