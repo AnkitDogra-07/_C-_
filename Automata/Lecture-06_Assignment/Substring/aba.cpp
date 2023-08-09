@@ -4,7 +4,7 @@
 #include<algorithm>
 using namespace std;
 
-string sub_aba(string str){
+string dfa(string str){
     unordered_map<string, char> state = {
         {"0b", '0'}, {"0a", '1'},
         {"1a", '1'}, {"1b", '2'},
