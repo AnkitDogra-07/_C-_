@@ -1,0 +1,11 @@
+{
+    "r.lsp.promptToInstall": false,
+    "files.associations": {
+        "*.embeddedhtml": "html",
+        "cstdlib": "cpp",
+        "iostream": "cpp",
+        "ostream": "cpp",
+        "unordered_map": "cpp",
+        "algorithm": "cpp"
+    }
+}
