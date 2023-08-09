@@ -31,7 +31,7 @@ int main(){
 
     cout << endl;
 
-    string ans = sub_aba(input_s);
+    string ans = dfa(input_s);
 
     if(ans == "3"){
         cout << input_s << " is a valid string with substring aba.";
