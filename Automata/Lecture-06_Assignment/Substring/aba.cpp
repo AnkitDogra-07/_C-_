@@ -37,10 +37,8 @@ int main(){
         cin >> input_s;
 
         if(!isvalid(input_s)){
-            cout << "Please enter a valid Input !!";
+            cout << "Please enter a string with only a,b!!" << endl << endl;
         }
-
-        cout << endl;
     }while(!isvalid(input_s));
 
     cout << endl;
@@ -52,7 +50,7 @@ int main(){
     }
 
     else{
-        cout << input_s << " is not a valid string." << endl;
+        cout << input_s << " does not have aba as substring." << endl;
     }
 
     return 0;
