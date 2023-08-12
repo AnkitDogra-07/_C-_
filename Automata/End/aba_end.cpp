@@ -27,16 +27,29 @@ private:
     int substring_len;
 
 public:
-    DFA(const string& inp) {
-        substring_len = inp.length();
+    DFA(const string& sub) {
+        substring_len = sub.length();
         curr_state = 0;
         for (int i = 0; i < substring_len; i++) {
-            transition[inp[i]] = i + 1;
+            transition[sub[i]] = i + 1;
         }
     }
 
     bool accepts(const string& inp) {
-        
+        for (const auto& x: inp){
+            if(transition.find(x) == transition.end()){
+                return false;
+            }
+
+            else{
+                curr_state = transition[x];
+
+                if(curr_state == substring_len){
+                    return true;
+                }
+            }
+        }
+        return false;
     }
 };
 
