@@ -54,8 +54,18 @@ public:
 };
 
 int main() {
-    string inp = "aababaaaba";
-    dfa(inp);
+    string input_s;
+    unordered_set<char> valid = {'a', 'b'};
 
-    return 0;
+    do{
+        cout << "Enter a string over \u03A3 = {a,b}:";
+        cin >> input_s;
+
+        if(!isvalid(input_s, valid)){
+            cout << "Please enter a string with only a,b!!" << endl << endl;
+        }
+    }while(!isvalid(input_s, valid));
+
+    cout << endl;
+
 }
