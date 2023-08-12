@@ -1,9 +1,8 @@
-#include<iostream>
-#include<unordered_map>
-#include"../../boilerplate/isvalid.hpp"
+#include <iostream>
+#include <unordered_map>
+#include "../../boilerplate/isvalid.hpp"
 
-void dfa(string str){
-
+void dfa(string str) {
     unordered_map<string, string> state;
     unordered_map<string, string> stt;
     state = {
@@ -15,12 +14,35 @@ void dfa(string str){
 
     string curr_state = "0";
 
-    for(const auto& x: str){
-        curr_state = state[string(curr_state+x)];
+    for (const auto& x : str) {
+        curr_state = state[curr_state + x];
+        stt["q" + curr_state];
     }
 }
 
-int main(){
+class DFA {
+private:
+    unordered_map<char, int> transition;
+    int curr_state;
+    int substring_len;
+
+public:
+    DFA(const string& inp) {
+        substring_len = inp.length();
+        curr_state = 0;
+        for (int i = 0; i < substring_len; i++) {
+            transition[inp[i]] = i + 1;
+        }
+    }
+
+    bool accepts(const string& inp) {
+        
+    }
+};
+
+int main() {
     string inp = "aababaaaba";
-   dfa(inp);
+    dfa(inp);
+
+    return 0;
 }
