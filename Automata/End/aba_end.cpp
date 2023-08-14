@@ -66,7 +66,5 @@ int main() {
         cout << "String does not contain the substring '" << sub << "'." << endl;
     }
 
-    // dfa.display();
-
     return 0;
 }
