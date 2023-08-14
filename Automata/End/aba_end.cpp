@@ -4,29 +4,28 @@
 #include "../../boilerplate/isvalid.hpp"
 using namespace std;
 
-void dfa(string str) {
-    unordered_map<string, string> state;
-    unordered_map<string, string> stt;
-    state = {
-        {"0a", "1"}, {"0b", "0"},
-        {"1a", "1"}, {"1b", "2"},
-        {"2a", "3"}, {"2b", "0"},
-        {"3a", "1"}, {"3b", "2"}
-    };
+// void dfa(string str) {
+//     unordered_map<string, string> state;
+//     unordered_map<string, string> stt;
+//     state = {
+//         {"0a", "1"}, {"0b", "0"},
+//         {"1a", "1"}, {"1b", "2"},
+//         {"2a", "3"}, {"2b", "0"},
+//         {"3a", "1"}, {"3b", "2"}
+//     };
 
-    string curr_state = "0";
+//     string curr_state = "0";
 
-    for (const auto& x : str) {
-        curr_state = state[curr_state + x];
-        stt["q" + curr_state];
-    }
-}
+//     for (const auto& x : str) {
+//         curr_state = state[curr_state + x];
+//         stt["q" + curr_state];
+//     }
+// }
 
 class DFA {
 private:
     unordered_map<string, int> transition;
     int curr_state=0;
-    string curr = to_string(curr_state);
     int substring_len;
     string x;
     char sec;
@@ -42,24 +41,17 @@ public:
     }
     DFA(const string& sub) {
         substring_len = sub.length();
-        curr_state = 0;
         for (int i = 0; i < substring_len; i++) {
-            if(sub[i] == 'a'){
-                sec = 'b';
-            }
-
-            else{
-                sec = 'a';
-            }
-
-            x = to_string(i);
-            transition[string(x+sub[i])] = i+1;
-            transition[string(x+sec)] = i;
+            string state_str = to_string(i);
+            transition[state_str + "a"] = (i < substring_len && sub[i] == 'a') ? i + 1 : 0;
+            transition[state_str + "b"] = (i < substring_len && sub[i] == 'b') ? i + 1 : 0;
         }
     }
 
     bool accepts(const string& inp) {
+        curr_state = 0;
         for (char ch: inp){
+            string curr = to_string(curr_state);
             if(transition.find(string(curr+ch)) == transition.end()){
                 curr_state = 0;
             }
@@ -67,7 +59,7 @@ public:
             else{
                 curr_state = transition[string(curr+ch)];
 
-                if(curr_state == substring_len-1){
+                if(curr_state == substring_len){
                     return true;
                 }
             }
@@ -97,15 +89,15 @@ int main() {
 
     DFA dfa(sub);
 
-    // if(dfa.accepts(input_s) == true){
-    //  cout << "String contains the substring '" << sub << "'." << endl;
-    // } 
+    if(dfa.accepts(input_s) == true){
+     cout << "String contains the substring '" << sub << "'." << endl;
+    } 
     
-    // else {
-    //     cout << "String does not contain the substring '" << input_s << "'." << endl;
-    // }
+    else {
+        cout << "String does not contain the substring '" << sub << "'." << endl;
+    }
 
-    dfa.display();
+    // dfa.display();
 
     return 0;
 }
