@@ -50,10 +50,12 @@ int main(){
 
     sort(total_museum.begin(), total_museum.end());
 
+    //When number of cities to visit are less than number of holidays...
     if(cnt < k){
         cout << -1;
     }
 
+    //When number of cities to visit are same as number of holidays...
     else if(cnt == k){
         for(int i:total_museum){
             sum+=i;
