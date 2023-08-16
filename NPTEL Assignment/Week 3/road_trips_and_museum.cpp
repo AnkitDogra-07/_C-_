@@ -62,6 +62,7 @@ int main(){
         cout << sum;
     }
 
+    //When number of cities to visit are more than number of holidays...
     else if (cnt > k){
         int i=0, j=total_museum.size()-1;
     
