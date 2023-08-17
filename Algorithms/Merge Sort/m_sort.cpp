@@ -35,14 +35,9 @@ void merge(int A[], int m, int B[], int n, int C[]){
     }
 }
 
-void m_sort(int A[], int left, int right){
-    if(left < right){
-        int mid = left + (right - left)/2;
-
-        m_sort(A, left, mid);
-        m_sort(A, mid, right);
-        
-    }
+void m_sort(int A[], int left, int right, m, n){
+    int left[m];
+    int right[n];
 }
 
 int main(){
