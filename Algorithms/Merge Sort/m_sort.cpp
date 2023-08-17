@@ -1,11 +1,47 @@
 #include<iostream>
 using namespace std;
 
-void m_sort(int A[], int m, int B[], int n, int C[]){
+void merge(int A[], int m, int B[], int n, int C[]){
     int i=0, j=0, k=0;
 
     while(i<m && j<n){
+        if(A[i] <= B[j]){
+            C[k] = A[i];
+            i++;
+        }
 
+        else{
+            C[k] = B[j];
+            j++;
+        }
+
+        k++;
+    }
+
+    while(i<n){
+        C[k] = A[i];
+        i++; k++;
+    }
+
+    while(j<m){
+        C[k] = B[j];
+        j++; k++;
+    }
+
+    cout << "Array after Merge Sort" << endl;
+
+    for (int x = 0; x < m + n; x++) {
+        cout << C[x] << "\t";
+    }
+}
+
+void m_sort(int A[], int left, int right){
+    if(left < right){
+        int mid = left + (right - left)/2;
+
+        m_sort(A, left, mid);
+        m_sort(A, mid, right);
+        
     }
 }
 
@@ -44,7 +80,7 @@ int main(){
 
     cout << endl;
 
-    m_sort(A, m, B, n, C);
+    m_sort(A, 0, size-1);
 
     delete[] arr;
     delete[] A;
