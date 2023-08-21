@@ -15,7 +15,7 @@ void insertionSort(int A[], int n) {
 
 // Recursive Insertion Sort
 void insertionSort_rec(int A[], int start, int n) {
-    if (start >= n - 1) {
+    if (start > n - 1) {
         return;
     }
 
