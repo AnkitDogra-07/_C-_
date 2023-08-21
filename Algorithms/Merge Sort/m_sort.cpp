@@ -27,3 +27,17 @@ void merge(vector<int>& A, vector<int>& B, vector<int>& C){
     }
 }
 
+void mergeSort(vector<int>& A, vector<int>& B, int left, int right){
+    if(right - left <= 1){
+        return;
+    }
+
+    int mid = left + ((right - left)/2);
+    vector<int> l(A.begin() + left, A.begin() + mid);
+    vector<int> r(A.begin() + mid, A.begin() + right);
+
+    mergeSort(A, l, left, mid);
+    mergeSort(A, r, mid, right);
+
+    merge(l, r, B);
+}
