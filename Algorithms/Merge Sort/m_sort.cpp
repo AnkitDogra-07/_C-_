@@ -41,3 +41,38 @@ void mergeSort(vector<int>& A, vector<int>& B, int left, int right){
 
     merge(l, r, B);
 }
+
+
+int main() {
+    int size;
+    cout << "Enter size of array : ";
+    cin >> size;
+
+    vector<int> arr(size);
+    vector<int> C(size);
+
+    for (int i = 0; i < size; i++) {
+        cout << "Enter element at index position " << i << " : ";
+        cin >> arr[i];
+    }
+
+    cout << "Array before Merge Sort" << endl;
+
+    for (int i = 0; i < size; i++) {
+        cout << arr[i] << "\t";
+    }
+
+    cout << endl;
+
+    mergeSort(arr, C, 0, size);
+
+    cout << "Array after Merge Sort" << endl;
+
+    for (int i = 0; i < size; i++) {
+        cout << C[i] << "\t";
+    }
+
+    cout << endl;
+
+    return 0;
+}
