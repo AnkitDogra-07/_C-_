@@ -35,9 +35,22 @@ void merge(int A[], int m, int B[], int n, int C[]){
     }
 }
 
-void m_sort(int A[], int left, int right, m, n){
-    int left[m];
-    int right[n];
+void m_sort(int A[], int left, int right, int B[]) {
+    if (right - left <= 1) {
+        return;
+    }
+
+    int mid = left + ((right - left) / 2);
+    int* l = new int[mid - left];
+    int* r = new int[right - mid];
+
+    m_sort(A, left, mid, l);
+    m_sort(A, mid, right, r);
+
+    merge(l, mid - left, r, right - mid, B);
+
+    delete[] l;
+    delete[] r;
 }
 
 int main(){
@@ -46,25 +59,11 @@ int main(){
     cin >> size;
 
     int* arr = new int(size);
-
-    int m = size/2;
-    int n = size - m;
-
-    int* A = new int[m];
-    int* B = new int[n];
     int* C = new int[size];
 
     for(int i=0; i<size; i++){
         cout << "Enter element at index position " << i << " : ";
         cin >> arr[i];
-    }
-
-    for(int i=0; i<m; i++){
-        A[i] = arr[i];
-    }
-
-    for(int i=0; i<n; i++){
-        B[i] = arr[m+i];
     }
 
     cout << "Array before Merge Sort" << endl;
@@ -75,11 +74,9 @@ int main(){
 
     cout << endl;
 
-    m_sort(A, 0, size-1);
+    m_sort(arr, 0, size, C);
 
     delete[] arr;
-    delete[] A;
-    delete[] B;
     delete[] C;
     
 }
