@@ -5,7 +5,11 @@
 
 using namespace std;
 
-/*Iteration - 1
+// **Iteration - 1**
+// In this iteration, you used a five-way merge approach to find elected candidates.
+
+
+/*-----------------------------------------------------------------------------------------------------------------------------------------
 vector<int> five_way_merge(vector<vector<int>>& zone_lists) {
     unordered_map<int, int> candidate_count;
     vector<int> elected_candidates;
@@ -22,30 +26,13 @@ vector<int> five_way_merge(vector<vector<int>>& zone_lists) {
     sort(elected_candidates.begin(), elected_candidates.end());
     elected_candidates.erase(unique(elected_candidates.begin(), elected_candidates.end()), elected_candidates.end());
     return elected_candidates;
-}
-
-int main() {
-    vector<int> N(5);
-    vector<vector<int>> zone_lists(5);
-
-    for (int i = 0; i < 5; ++i) {
-        cin >> N[i];
-        zone_lists[i].resize(N[i]);
-
-        for (int j = 0; j < N[i]; ++j) {
-            cin >> zone_lists[i][j];
-        }
-
-        sort(zone_lists[i].begin(), zone_lists[i].end());
-    }
-
-    vector<int> elected_candidates = five_way_merge(zone_lists);
-    cout << elected_candidates.size() << endl;
-
-    return 0;
 }*/
 
-/* Iteration-2
+
+
+// **Iteration-2**
+// In this iteration, you simplified the code by using separate variables for the counts of candidates in each zone.
+/*
 int main() {
     int N1, N2, N3, N4, N5;
     cin >> N1 >> N2 >> N3 >> N4 >> N5;
@@ -96,18 +83,19 @@ int main() {
 
     return 0;
 }
+--------------------------------------------------------------------------------------------------------------------------------------------
 */
 
-//Iteration-3
-
+// **Iteration-3**
+// In this iteration, you further simplified the code by directly counting candidates in a single unordered_map.
 int main(){
-    int n1,n2,n3,n4,n5;
+    int n1, n2, n3, n4, n5;
     cin >> n1 >> n2 >> n3 >> n4 >> n5;
 
     unordered_map <int, int> candidate_list;
     int candidate;
 
-    for(int i=0; i<n1+n2+n3+n4+n5; i++){
+    for(int i = 0; i < n1 + n2 + n3 + n4 + n5; i++){
         cin >> candidate;
         candidate_list[candidate]++;
     }
