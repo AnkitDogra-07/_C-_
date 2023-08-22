@@ -20,4 +20,3 @@ int partition(vector<int>& A, int low, int high){
     return (i+1);
 }
 
-void quick_sort()
