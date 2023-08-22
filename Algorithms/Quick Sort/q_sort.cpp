@@ -1,7 +1,8 @@
 #include<iostream>
 #include<vector>
+#include"../Boilerplate/swap.hpp"
 using namespace std;
 
-void q_sort(vector<int>& A){
-    int n = A.size();
+void partition(vector<int>& A, int low, int high){
+    int pivot = A[high];
 }
