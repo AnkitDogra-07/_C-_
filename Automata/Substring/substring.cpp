@@ -13,13 +13,18 @@ private:
     
 public:
     DFA(const string& sub) {
+        int ct_a = 0;
+        int ct_b = 0;
         substring_len = sub.length();
 
-        transition.assign(substring_len + 1, vector<int>(2, 0));
+        transition.assign(substring_len + 2, vector<int>(2, 0));
 
-        for (int i = 0; i < substring_len; i++) {
+        for (int i = 0; i <= substring_len; i++) {
             if (i < substring_len) {
                 transition[i][sub[i] - 'a'] = i + 1;
+                if(i == 1){
+                    
+                }
             }
         }
     }
