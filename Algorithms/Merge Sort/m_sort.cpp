@@ -56,6 +56,7 @@ void mergeSort(vector<int>& A, vector<int>& B, int left, int right){
 }
 
 int main() {
+    cout << "Merge Sort" << endl << endl;
     int size;
     cout << "Enter size of array : ";
     cin >> size;
