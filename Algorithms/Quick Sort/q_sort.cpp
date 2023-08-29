@@ -20,3 +20,40 @@ int partition(vector<int>& A, int low, int high){
     return (i+1);
 }
 
+void quick_sort(vector<int>& A, int left, int right){
+    if(left < right){
+        int p = partition(A, left, right);
+        quick_sort(A, left, p-1);
+        quick_sort(A, p, right);
+    }
+}
+
+int main(){
+    int size;
+
+    cout << "Enter Size of Array:";
+    cin >> size;
+
+    vector<int> arr(size);
+
+    for(int i=0; i<size; i++){
+        cout << "Element at index position " << i << " : ";
+        cin >> arr[i];
+    }
+
+    cout << endl;
+
+    cout << "Array before Quick Sort" << endl;    
+    for(int i=0; i<size; i++){
+        cout << arr[i] << "\t";
+    }
+
+    quick_sort(arr, 0, size - 1);
+
+    cout << endl;
+
+    cout << "Array after Quick Sort" << endl;    
+    for(int i=0; i<size; i++){
+        cout << arr[i] << "\t";
+    }
+}

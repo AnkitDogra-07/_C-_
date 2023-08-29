@@ -4,6 +4,7 @@
         "*.embeddedhtml": "html",
         "cstdlib": "cpp",
         "iostream": "cpp",
-        "ostream": "cpp"
+        "ostream": "cpp",
+        "vector": "cpp"
     }
 }
