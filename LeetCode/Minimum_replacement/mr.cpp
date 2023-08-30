@@ -27,3 +27,36 @@ Constraints:
 1 <= nums.length <= 105
 1 <= nums[i] <= 109
 */
+
+#include <iostream>
+#include <vector>
+
+using namespace std;
+
+// Function to find the minimum number of replacements to make the array non-decreasing.
+long long minimumReplacement(vector<int>& nums) {
+    int n = nums.size();  // Get the size of the input array.
+    long long ans = 0;    // Initialize the number of replacements to 0.
+    int last = nums[n - 1];  // Start with the last element of the array.
+
+    // Iterate through the array from right to left, starting from the second-to-last element.
+    for (int i = n - 2; i >= 0; i--) {
+        if (nums[i] > last) {
+            int t = nums[i] / last;  // Calculate how many times the current element can be divided by the last element.
+            if (nums[i] % last) t++; // If there's a remainder, add 1 to t.
+            last = nums[i] / t;      // Update the last element to be the result of the division.
+            ans += (t - 1);          // Increment the number of replacements by (t - 1).
+        } else {
+            last = nums[i];  // If the current element is not greater than the last, update the last element.
+        }
+    }
+    return ans;  // Return the total number of replacements.
+}
+
+int main() {
+    vector<int> nums = {5, 8, 7};
+    long long result = minimumReplacement(nums);
+    cout << "Minimum number of replacements: " << result << endl;
+
+    return 0;
+}
