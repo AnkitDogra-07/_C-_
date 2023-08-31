@@ -1,28 +1,30 @@
 #include <iostream>
+#include <queue>
+#include <vector>
 using namespace std;
 
 int main() {
-    int T;
-    cin >> T;
-
-    while (T--) {
-        int L, R, M;
-        cin >> L >> R >> M;
-
-        int pages = 0, codeLines = 0;
-
-        if(M%L == 0){
-            pages = M/L;
-        }
+    int t;
+    cin >> t;
+    while (t--) {
+        int n, k, l, d, i = 0;
+        cin >> n >> k >> l;
+        priority_queue<int> p;
         
-        else{
-            pages = M/L + 1;
+        for (int i = 0; i < n; i++) {
+            cin >> d;
+            p.push(d);
         }
-        
-        codeLines = M/R;
 
-        cout << pages + codeLines << endl;
+        vector<int> total_deliciousness(k, 0);
+
+        while (!p.empty()) {
+            total_deliciousness[i] += p.top();
+            p.pop();
+            i = (i + 1) % k;
+        }
+
+        cout << total_deliciousness[l-1] << endl; // Adjust for 1-based indexing
     }
-
     return 0;
 }
