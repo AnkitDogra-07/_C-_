@@ -9,13 +9,14 @@ struct Item{
 };
 
 static bool cmp(struct Item a,  struct Item b){
-  double r1 = (double)a.profit / (double)a.weight;
-  double r2 = (double)b.profit / (double)b.weight;
+  double r1 = static_cast<double>(a.profit) / static_cast<double>(a.weight);
+  double r2 = static_cast<double>(b.profit) / static_cast<double>(b.weight);
 
   return r1>r2;
 }
 
-double fractional_knapSack(int capacity, vector<Item>& items){
+void fractional_knapSack(int capacity, vector<Item>& items){
+  cout << "\n\n";
   int n = items.size();
   
   sort(items.begin(), items.end(), cmp);
@@ -25,15 +26,16 @@ double fractional_knapSack(int capacity, vector<Item>& items){
     if(items[i].weight <= capacity){
       capacity -= items[i].weight;
       ans += items[i].profit;
+      
+      cout << "Item " << i+1 << " has been added to the sack." << endl << "Remaining Weight: " << static_cast<double>(capacity)<< endl << "Current Profit: " << ans << endl << endl; 
     }
 
     else{
-      ans += items[i].profit * ((double)capacity / (double)items[i].weight);
+      ans += items[i].profit * (static_cast<double>(capacity) / static_cast<double>(items[i].weight));
+      cout << "Item " << i+1 << " has been added to the sack." << endl << "Remaining Weight: " << 0 << endl << "Current Profit: " << ans << endl; 	
       break;
     }
-  }
-
-  return ans;
+  } 
 } 
 
 int main(){
@@ -52,7 +54,5 @@ int main(){
   cout << "Enter maximum capacity of the KnapSack: ";
   cin >> capacity;
 
-  double ans = fractional_knapSack(capacity, items);
-
-  cout << "Maximum Profit: " << ans << endl;
+  fractional_knapSack(capacity, items);
 }
