@@ -13,12 +13,14 @@ struct Chain{
 
 vector<vector<Chain>> adj_lst;
 
-void search(int curr_node, vector<bool>& visited, int max) {
+vector<int> bfs(int start_node, vector<bool>& visited, int max) {
     visited.resize(max + 1, false);
     list<int> q;
+    vector<int> bfsTraversal;
 
-    visited[curr_node] = true;
-    q.push_back(curr_node);
+    visited[start_node] = true;
+    q.push_back(start_node);
+    bfsTraversal.push_back(start_node);
 
     while (!q.empty()) {
         int s = q.front();
@@ -29,9 +31,12 @@ void search(int curr_node, vector<bool>& visited, int max) {
             if (!visited[neighbor]) {
                 visited[neighbor] = true;
                 q.push_back(neighbor);
+                bfsTraversal.push_back(neighbor);
             }
         }
     }
+
+  return bfsTraversal;
 }
 
 int main(){
@@ -55,14 +60,12 @@ int main(){
     cin >> start_node;
 
     vector<bool> visited(m + 1, false); 
-    search(start_node, visited, m);
+    vector<int> ans = bfs(start_node, visited, m);
 
-    cout << "Nodes reachable from node " << start_node << ": ";
-    for (int i = 0; i <= m; i++) {
-        if (visited[i]) {
-            cout << i << " ";
-        }
-    }
+    cout << "Following is the Breadth First Traversal from Node " << start_node << ": ";
+      for(int node: ans){
+        cout << node << " ";
+      }
     cout << endl;
 
     return 0;
