@@ -1,10 +1,10 @@
 #include <iostream>
 #include <vector>
 #include "../Boilerplate/swap.hpp"
-using std::vector, std::cout, std::cin;
+using std::vector, std::cout, std::cin, std::endl;
 
 void heapify(vector<int>& heap, int n, int i){
-  int parent = (i-1)/2;
+  int parent = i;
   int left = (2*i) - 1;
   int right = (2*i) + 2;
 
@@ -23,9 +23,9 @@ void heapify(vector<int>& heap, int n, int i){
 }
 
 void build_heap(vector<int>& heap){
-  int index_init = (heap.size()/2) - 1;
+  int index_init = (heap.size()-1)/2;
 
-  for(int i= index_init; i>=0; i--){
+  for(int i = index_init; i>=0; i--){
     heapify(heap, heap.size(), i);
   }
 }
@@ -44,7 +44,10 @@ int main(){
 
   build_heap(heap);
 
-  for(const int& x: heap){
+  for(const auto& x: heap){
     cout << x << "\t";
   }
+
+  cout << endl;
+  return 0;
 }
