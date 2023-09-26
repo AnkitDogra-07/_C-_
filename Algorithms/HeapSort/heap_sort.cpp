@@ -1,7 +1,7 @@
 #include <iostream>
 #include <vector>
 #include "../Boilerplate/swap.hpp"
-using std::vector;
+using std::vector, std::cout, std::cin;
 
 void heapify(vector<int>& heap, int i){
   int parent = (i-1)/2;
@@ -22,5 +22,18 @@ void insert_node(vector<int>& heap, int node){
 }
 
 int main(){
+  int n, node;
+  cout << "Enter size of heap : ";
+  cin >> n;
 
+  vector<int> heap(n, 0);
+
+  for(int i=0; i<n; i++){
+    cin >> node;
+    insert_node(heap, node);
+  }
+
+  for(const int& x: heap){
+    cout << x;
+  }
 }
